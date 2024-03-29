@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <font><b>Animation</b></font><br>
+    <input type="number" name="Animation" id="Animation" value="500" min="0" max="99999" /><label for="Animation">MSec.</label>
+    <input type="button" name="Animation_button" value="Send" onclick="set_Animation()"/><br><label for="Animation_button" style="color: red;">0 = disable</label>
+    <br>
+    <br>
+
+    <font><b>Most active user</b></font><br>
+    <input type="button" value="Show Numbers" onclick="set_NumbersVisibility_actUser(true)"/>
+    <input type="button" value="Hide Numbers" onclick="set_NumbersVisibility_actUser(false)"/>
+    <br>
+    <br>
+
+    <font><b>Donations</b></font><br>
+    <input type="button" value="Show Numbers" onclick="set_NumbersVisibility_dono(true)"/>
+    <input type="button" value="Hide Numbers" onclick="set_NumbersVisibility_dono(false)"/>
+    <br>
+  </body>
+  <script>
+    //streamtools_api_server = "ws://127.0.0.1:1234"; //local zu testzwecken
+
+    const ws_link = streamtools_api_server+'/'+streamtools_api_channel+'/'+streamtools_api_token;
+    var ws; 
+    var fail_counter = 1;
+    var last_fail = 0;
+
+    load_websocket();
+    function load_websocket(){
+        ws = new WebSocket(ws_link);
+        ws.onmessage = (event) => {
+            try{
+                data = JSON.parse(event.data);
+                console.log(data);
+            }catch (err){
+                console.error(err);
+            }
+        };
+
+        ws.onclose = (event) => {
+            //hier fehlt noch der reconect
+            reconect();
+        }
+
+        ws.onopen = (event) => {
+            console.log("Successfully connect to websocket =>" + event.target.url);
+            fail_counter = 1;
+            last_fail = 0;
+        }
+
+        ws.onerror = (event) => {
+            console.error("Connect to websocket failed =>" + event.target.url);
+            reconect();
+        }
+    }
+
+    async function reconect(){
+        var now = Math.floor(Date.now() / 1000);
+        if((last_fail +1) >= now) return;
+
+        try{
+            ws.close();
+        }catch (err){
+        }
+
+        ws = undefined;
+        var w_time = fail_counter * 1000;
+        await new Promise(resolve => setTimeout(resolve, w_time));
+        load_websocket();
+        fail_counter++;
+        last_fail = Math.floor(Date.now() / 1000);
+    }
+
+    async function set_NumbersVisibility_actUser(val){
+        var payload = {cmd: "peer", data: {toggle_numbers_actuser: val}};
+        ws.send(JSON.stringify(payload));
+    }
+
+    async function set_NumbersVisibility_dono(val){
+        var payload = {cmd: "peer", data: {toggle_numbers_dono: val}};
+        ws.send(JSON.stringify(payload));
+    }
+
+    async function set_Animation(){
+        var payload = {cmd: "peer", data: {set_animation: $("#Animation").val()}};
+        ws.send(JSON.stringify(payload));
+    }
+  </script>
+</html>
+
+

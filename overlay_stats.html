@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="config.js"></script>
+    <script src="src/tools.js"></script>
+    <script src="src/overlay.js"></script>
+    <script src="src/streamingtools.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="box text">
+        <!--Hier könntest du die Überschriften der Spalten anpassen-->
+        <div>
+          <div class="text_header">Follower</div>
+          <div class="value_box">
+            <div class="text_value" id="follower"></div>
+          </div>
+        </div>
+        <div>
+          <div class="text_header">Subscriber</div>
+          <div class="value_box">
+            <div class="text_value" id="subscriber"></div>
+          </div>
+        </div>
+        <div><div class="text_header">Donation</div>
+          <div class="value_box">
+            <div class="text_value" id="donation"></div>
+          </div>
+        </div>
+        <div>
+          <div class="text_header">Most active user</div>
+          <div class="value_box">
+            <div class="text_value" id="aktUser"></div>
+            <div class="text_value aktUser_Value" id="aktUser_Value"></div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
