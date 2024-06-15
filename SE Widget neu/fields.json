@@ -1,0 +1,52 @@
+{
+    "streamtools_api_token": {
+      "type": "text",
+      "label": "STREAMTOOLS API-Token:",
+      "value": "e4717e1b-d210-4c64-a4aa-661972dc3daf"
+    },
+    "streamtools_api_channel": {
+      "type": "number",
+      "label": "STREAMTOOLS Channel-ID:",
+      "value": 35974108
+    },
+    "streamtools_api_server": {
+      "type": "text",
+      "label": "STREAMTOOLS API-Server",
+      "value": "wss://api.streaming-tools.de"
+    },
+    "period_topchatter": {
+      "type": "dropdown",
+      "label": "Period Topchatter",
+      "value": "day",
+      "options": {
+        "day": "day",
+        "month": "month",
+        "year": "year",
+        "all": "all"
+      }
+    },
+    "show_numbers_actuser": {
+      "type": "checkbox",
+      "label": "Show numbers Most Activ User:",
+      "value": false
+    },
+    "show_numbers_dono": {
+      "type": "checkbox",
+      "label": "Show numbers Last Donations:",
+      "value": false
+    },
+    "animation_time": {
+      "type": "number",
+      "label": "Animation time:",
+      "value": 500
+    },
+    "animation_type": {
+      "type": "dropdown",
+      "label": "Animation type:",
+      "value": "write",
+      "options": {
+        "write": "write",
+        "fade": "fade"
+      }
+    }
+  }

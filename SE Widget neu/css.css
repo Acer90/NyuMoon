@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap'); /* schriftart von google fonts laden */
+
+.text {
+    font-family: "El Messiri", sans-serif; /*allgemeine schriftart*/
+    font-optical-sizing: auto;
+    font-weight: bold;
+    fill: none;
+    stroke: rgba(36, 8, 0, 1); /*umrandung schrift Farbe*/
+    stroke-width: 4px; /*umrandung schrift breite*/
+    stroke-linejoin: round; /*umrandung schrift ecken (round = abgerundet)*/
+    filter: drop-shadow(1px 1px 1px rgba(103, 56, 36, 1)); /* das ist der schatten, umrandung der schrift 1px 1px 1px steht für die größe, rgba ist die frabe mit alpha (4 Wert 0.0- 1.0) */
+    color: #ffe4a7; /* alter farbwert #FFD299 */
+    letter-spacing: 1px; /* da ist die Angabe des Buchstaben Abstandes */
+}
+
+/* Header - obere Text */
+.text_header {
+    font-size: 18px; /* schriftgröße Header */
+    padding-bottom: 1px; /* abstandt zum wert unter dem Header */
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+/* Value - untere text */
+.value_box{
+    width: 100%;
+    overflow-x: hidden;
+}
+.text_value {
+    width: 500px;
+    font-size: 30px;
+    padding-left: 35px; /* versatz des Wertes (Benutzer) nach links im zum Header */
+    position: relative;
+    white-space: nowrap;
+    left: 0;
+}
+
+.aktUser_Value {
+    margin-left: 10px;
+}
+
+.box {
+    display: grid; 
+    grid-template-columns: 25% 25% 25% 25%; /* das hier sind sozusagen die spaltenbreite der Tabelle, 1fr für alle 4 reihen bedeutet das sie immer im gleichen verhältnis zueinhader stehen (alle sind gleich breit)*/
+    white-space: nowrap; /* verbietet den automatischen zeilenumbruch von leerzeichen */
+    overflow-x: hidden;
+}
+
+/*bereich für die Animation hier nichts ändern*/
+.writer {
+	position:relative;
+	opacity:0;
+	text-align:left;
+	white-space:nowrap;
+	overflow:hidden;
+    float: left;
+}
+
+@keyframes charAnim {
+	0% {opacity:0;}
+	35% {opacity:0.5;}
+	100% {opacity:1.0;}
+}

@@ -1,6 +1,6 @@
 //streamtools_api_server = "ws://127.0.0.1:1234"; //local zu testzwecken
 
-const ws_link = streamtools_api_server+'/'+streamtools_api_channel+'/'+streamtools_api_token;
+let ws_link = streamtools_api_server+'/'+streamtools_api_channel+'/'+streamtools_api_token;
 var ws; 
 var fail_counter = 1;
 var last_fail = 0;

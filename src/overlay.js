@@ -83,7 +83,7 @@ async function streamelements_reconnect(){
 
 streamelements_startup();
 function streamelements_startup(){
-    fetch('https://api.streamelements.com/kappa/v2/sessions/'+streamelements_channel_id, options)
+    fetch('https://api.streamelements.com/kappa/v3/sessions/'+streamelements_channel_id, options)
     .then(response => response.json())
     .then(response => this.load_OnStartUp (response))
     .catch(err => console.error(err));
